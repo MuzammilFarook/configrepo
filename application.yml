@@ -1,2 +1,78 @@
-common:
-  property: "This is a common property for all services"
+server:
+  port: 8080
+  tomcat:
+    threads:
+      max: 2        # ✅ Limit max threads to 10
+      min-spare: 1
+
+
+spring:
+  config:
+    import: "optional:configserver:"
+  application:
+    name: task-management
+  cloud:
+    config:
+      enabled: true
+      discovery:
+        enabled: true
+        service-id: config
+      fail-fast: true
+      retry:
+        initial-interval: 200      # Start retry after 200 ms
+        max-attempts: 5000         # Keep retrying aggressively
+        max-interval: 2000         # Max interval of 2 seconds between retries
+        multiplier: 1.5
+  h2:
+    console:
+      settings:
+        web-allow-others: true
+      enabled: true
+      path: /h2-console
+
+  datasource:
+    url: jdbc:h2:mem:taskdb  # In-memory H2 database
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    hikari:
+        maximum-pool-size: 2  # Simulate DB pool exhaustion
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+
+# Entity Definitions
+task-entities:
+  entities:
+    CAR:
+      description: "String"
+      priority: "String"
+      dueDate: "Date"
+    TRAIN:
+      route: "String"
+      duration: "String"
+      station: "String"
+    BIKE:
+      model: "String"
+      color: "String"
+      price: "Double"
+    DEFAULT:
+      info: "String"
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://alpha:8761/eureka/,http://omega:8762/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+
+logging:
+  level:
+    root: INFO
+
