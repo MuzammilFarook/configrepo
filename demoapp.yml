@@ -4,8 +4,7 @@ task-mapping:
   C: "Client Support"
 
 spring:
-  config:
-    import: "configserver:"
+
   h2:
     console:
       settings:
