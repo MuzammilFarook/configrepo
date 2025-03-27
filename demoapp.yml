@@ -16,7 +16,11 @@ spring:
     username: sa
     password:
     hikari:
-      maximum-pool-size: 2  # Simulate DB pool exhaustion
+      minimum-idle: 1              # Keep 1 idle connection
+      maximum-pool-size: 1         # Max 1 connection in pool
+      connection-timeout: 30000    # 30 seconds timeout
+      idle-timeout: 600000         # 10 minutes idle timeout
+      max-lifetime: 1800000        # 30 minutes max lifetime
 
   jpa:
     hibernate:
