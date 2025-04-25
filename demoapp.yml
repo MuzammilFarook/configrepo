@@ -1,34 +1,3 @@
-public enum RepaymentType {
-    @JsonProperty("Fixed Principal plus Interest (as it falls due)")
-    FIXED_PRINCIPAL_PLUS_INTEREST,
-
-    @JsonProperty("Fixed Repayment (Fixed P & I) followed by Bullet")
-    FIXED_REPAYMENT_FOLLOWED_BY_BULLET,
-
-    @JsonProperty("Interest Only followed by Bullet")
-    INTEREST_ONLY_FOLLOWED_BY_BULLET,
-
-    @JsonProperty("Interest Roll-up followed by Bullet")
-    INTEREST_ROLL_UP_FOLLOWED_BY_BULLET,
-
-    @JsonProperty("Interest Only followed by Fixed Principal followed by Bullet")
-    INTEREST_ONLY_FIXED_PRINCIPAL_BULLET,
-
-    @JsonProperty("Interest Only followed by Fixed Repayment (Fixed P & I) followed by Bullet")
-    INTEREST_ONLY_FIXED_REPAYMENT_BULLET,
-
-    @JsonProperty("Deferred Repayment followed by Fixed Principal followed by Bullet")
-    DEFERRED_REPAYMENT_FIXED_PRINCIPAL_BULLET,
-
-    @JsonProperty("Deferred Repayment followed by Fixed Repayment (Fixed P & I) followed by Bullet")
-    DEFERRED_REPAYMENT_FIXED_REPAYMENT_BULLET,
-
-    @JsonProperty("Seasonal")
-    SEASONAL,
-
-    @JsonProperty("Sculpted Repayments")
-    SCULPTED_REPAYMENTS
-}
 
 task-mapping:
   mapping:
