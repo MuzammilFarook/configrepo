@@ -1,12 +1,3 @@
-Authentication and Authorization Flow:
-
-The system initiates an authentication request to API 1 by securely transmitting the Client ID and Client Secret.
-
-Upon successful authentication, API 1 issues an OAuth 2.0 access token.
-
-This access token is then included in the Authorization header (typically as a Bearer token) for subsequent API requests.
-
-Using the obtained token, the system securely invokes API 2, which validates the token and processes the request accordingly.
 server:
   port: 8080
 
